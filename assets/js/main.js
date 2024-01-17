@@ -7,6 +7,7 @@ const punteggioSessione = document.getElementById("punteggio");
 let arrayBombe = [];
 let randomNum
 let caselleCliccate = 0;
+let bombeVicine = 0;
 
 //creazione overlay in caso di sconfitta
 const overlaySconfitta = document.createElement("div");
@@ -32,9 +33,9 @@ buttonGioca.addEventListener( "click", function(){
         arrayBombe = [];
         caselleCliccate = 0;
 
-        campoMinato(100, 84);
+        //campoMinato(100, 84);
 
-        /*
+        
         //Crea array con 16 numeri casuali compresi tra 1 e 100
         for (let i = 0; i < 16; i++){
             do{
@@ -67,15 +68,171 @@ buttonGioca.addEventListener( "click", function(){
 
                     //if per evitare che le caselle diventate azzurre possano essere ripremute all'infinito per vincere
                     if (this.classList.contains("blue") === false){
-                        this.classList.toggle("blue");
-                        caselleCliccate++;
-                        console.log("punti:", caselleCliccate);
+                    this.classList.toggle("blue");
+                    caselleCliccate++;
+                    console.log("punti:", caselleCliccate);
+                    bombeVicine = 0;
+                    
+                    //Tutti i numeri eccetto i bordi
+                    if(i % 10 != 0 && i > 10 && i < 91 && (i-1) % 10 !== 0){
+                        if(arrayBombe.includes(i-1) == true){
+                            bombeVicine ++;
+                            console.log("sinistra")
+                        }
+    
+                        if(arrayBombe.includes(i+1) == true){
+                            bombeVicine ++;
+                            console.log("destra")
+                        }
+    
+                        if(arrayBombe.includes(i-10) == true){
+                            bombeVicine ++;
+                            console.log("sopra")
+                        }
+    
+                        if(arrayBombe.includes(i+10) == true){
+                            bombeVicine ++;
+                            console.log("sotto")
+                        }
+    
+                        if(arrayBombe.includes(i-11) == true){
+                            bombeVicine ++;
+                            console.log("sopra a sinistra")
+                        }
+    
+                        if(arrayBombe.includes(i+11) == true){
+                            bombeVicine ++;
+                            console.log("sotto a destra")
+                        }
+    
+                        if(arrayBombe.includes(i-9) == true){
+                            bombeVicine ++;
+                            console.log("sopra a destra")
+                        }
+    
+                        if(arrayBombe.includes(i+9) == true){
+                            bombeVicine ++;
+                            console.log("sotto a sinistra")
+                        }
+                    //Colonna di destra (deve avere 5 condizioni)
+                    } else if (i % 10 == 0){
+                        if(arrayBombe.includes(i+10) == true){
+                            bombeVicine ++;
+                            console.log("sotto")
+                        }
+
+                        if(arrayBombe.includes(i-10) == true){
+                            bombeVicine ++;
+                            console.log("sopra")
+                        }
+
+                        if(arrayBombe.includes(i-1) == true){
+                            bombeVicine ++;
+                            console.log("sinistra")
+                        }
+
+                        if(arrayBombe.includes(i-11) == true){
+                            bombeVicine ++;
+                            console.log("sopra a sinistra")
+                        }
+
+                        if(arrayBombe.includes(i+9) == true){
+                            bombeVicine ++;
+                            console.log("sotto a destra")
+                        }
+                    
+                    //Ultima Riga Bassa (deve avere 5 condizioni)
+                    } else if (i > 91 && i < 100){
+                        if(arrayBombe.includes(i-1) == true){
+                            bombeVicine ++;
+                            console.log("sinistra")
+                        }
+
+                        if(arrayBombe.includes(i+1) == true){
+                            bombeVicine ++;
+                            console.log("destra")
+                        }
+
+                        if(arrayBombe.includes(i-10) == true){
+                            bombeVicine ++;
+                            console.log("sopra")
+                        }
+
+                        if(arrayBombe.includes(i-11) == true){
+                            bombeVicine ++;
+                            console.log("sopra a sinistra")
+                        }
+
+                        if(arrayBombe.includes(i-9) == true){
+                            bombeVicine ++;
+                            console.log("sopra a destra")
+                        }
+
+                    //Colonna di sinistra (deve avere 5 condizioni)
+                    } else if ((i-1) % 10 == 0){
+                        if(arrayBombe.includes(i-10) == true){
+                            bombeVicine ++;
+                            console.log("sopra")
+                        }
+
+                        if(arrayBombe.includes(i+10) == true){
+                            bombeVicine ++;
+                            console.log("sotto")
+                        }
+
+                        if(arrayBombe.includes(i+1) == true){
+                            bombeVicine ++;
+                            console.log("destra")
+                        }
+
+                        if(arrayBombe.includes(i-9) == true){
+                            bombeVicine ++;
+                            console.log("sopra a destra")
+                        }
+
+                        if(arrayBombe.includes(i+11) == true){
+                            bombeVicine ++;
+                            console.log("sotto a destra")
+                        }
+                    
+                    //Prima Riga Alta (deve avere 5 condizioni)
+                    } else if (i < 10 || i > 1){
+                        if(arrayBombe.includes(i-1) == true){
+                            bombeVicine ++;
+                            console.log("sinistra")
+                        }
+
+                        if(arrayBombe.includes(i+1) == true){
+                            bombeVicine ++;
+                            console.log("destra")
+                        }
+
+                        if(arrayBombe.includes(i+10) == true){
+                            bombeVicine ++;
+                            console.log("sotto")
+                        }
+
+                        if(arrayBombe.includes(i+11) == true){
+                            bombeVicine ++;
+                            console.log("sotto a destra")
+                        }
+
+                        if(arrayBombe.includes(i+9) == true){
+                            bombeVicine ++;
+                            console.log("sotto a sinistra")
+                        }
+
                     }
+                    
+
+                    this.innerHTML = `<span>${bombeVicine}</span>`
+                    
+                }
                 }
             })
 
             grigliaHtml.append(box);
-        }*/
+        }
         
 
     //se la difficoltà è la numero 2
@@ -84,9 +241,8 @@ buttonGioca.addEventListener( "click", function(){
         arrayBombe = [];
         caselleCliccate = 0;
 
-        campoMinato(81, 65);
+        //campoMinato(81, 65);
 
-        /*
         //Crea array con 16 numeri casuali compresi tra 1 e 81
         for (let i = 0; i < 16; i++){
             do{
@@ -122,12 +278,168 @@ buttonGioca.addEventListener( "click", function(){
                         this.classList.toggle("blue");
                         caselleCliccate++;
                         console.log("punti:", caselleCliccate);
+                        bombeVicine = 0;
+                        
+                        //Tutti i numeri eccetto i bordi
+                        if(i % 9 != 0 && i > 9 && i < 73 && (i-1) % 9 !== 0){
+                            if(arrayBombe.includes(i-1) == true){
+                                bombeVicine ++;
+                                console.log("sinistra")
+                            }
+        
+                            if(arrayBombe.includes(i+1) == true){
+                                bombeVicine ++;
+                                console.log("destra")
+                            }
+        
+                            if(arrayBombe.includes(i-9) == true){
+                                bombeVicine ++;
+                                console.log("sopra")
+                            }
+        
+                            if(arrayBombe.includes(i+9) == true){
+                                bombeVicine ++;
+                                console.log("sotto")
+                            }
+        
+                            if(arrayBombe.includes(i-10) == true){
+                                bombeVicine ++;
+                                console.log("sopra a sinistra")
+                            }
+        
+                            if(arrayBombe.includes(i+10) == true){
+                                bombeVicine ++;
+                                console.log("sotto a destra")
+                            }
+        
+                            if(arrayBombe.includes(i-8) == true){
+                                bombeVicine ++;
+                                console.log("sopra a destra")
+                            }
+        
+                            if(arrayBombe.includes(i+8) == true){
+                                bombeVicine ++;
+                                console.log("sotto a sinistra")
+                            }
+                        //Colonna di destra (deve avere 5 condizioni)
+                        } else if (i % 9 == 0){
+                            if(arrayBombe.includes(i+9) == true){
+                                bombeVicine ++;
+                                console.log("sotto")
+                            }
+    
+                            if(arrayBombe.includes(i-9) == true){
+                                bombeVicine ++;
+                                console.log("sopra")
+                            }
+    
+                            if(arrayBombe.includes(i-1) == true){
+                                bombeVicine ++;
+                                console.log("sinistra")
+                            }
+    
+                            if(arrayBombe.includes(i-10) == true){
+                                bombeVicine ++;
+                                console.log("sopra a sinistra")
+                            }
+    
+                            if(arrayBombe.includes(i+8) == true){
+                                bombeVicine ++;
+                                console.log("sotto a destra")
+                            }
+                        
+                        //Ultima Riga Bassa eccetto 73 e 81(deve avere 5 condizioni)
+                        } else if (i > 73 && i < 81){
+                            if(arrayBombe.includes(i-1) == true){
+                                bombeVicine ++;
+                                console.log("sinistra")
+                            }
+    
+                            if(arrayBombe.includes(i+1) == true){
+                                bombeVicine ++;
+                                console.log("destra")
+                            }
+    
+                            if(arrayBombe.includes(i-9) == true){
+                                bombeVicine ++;
+                                console.log("sopra")
+                            }
+    
+                            if(arrayBombe.includes(i-10) == true){
+                                bombeVicine ++;
+                                console.log("sopra a sinistra")
+                            }
+    
+                            if(arrayBombe.includes(i-8) == true){
+                                bombeVicine ++;
+                                console.log("sopra a destra")
+                            }
+    
+                        //Colonna di sinistra (deve avere 5 condizioni)
+                        } else if ((i-1) % 9 == 0){
+                            if(arrayBombe.includes(i-9) == true){
+                                bombeVicine ++;
+                                console.log("sopra")
+                            }
+    
+                            if(arrayBombe.includes(i+9) == true){
+                                bombeVicine ++;
+                                console.log("sotto")
+                            }
+    
+                            if(arrayBombe.includes(i+1) == true){
+                                bombeVicine ++;
+                                console.log("destra")
+                            }
+    
+                            if(arrayBombe.includes(i-8) == true){
+                                bombeVicine ++;
+                                console.log("sopra a destra")
+                            }
+    
+                            if(arrayBombe.includes(i+10) == true){
+                                bombeVicine ++;
+                                console.log("sotto a destra")
+                            }
+                        
+                        //Prima Riga Alta eccetto 1 e 10(deve avere 5 condizioni)
+                        } else if (i < 10 || i > 1){
+                            if(arrayBombe.includes(i-1) == true){
+                                bombeVicine ++;
+                                console.log("sinistra")
+                            }
+    
+                            if(arrayBombe.includes(i+1) == true){
+                                bombeVicine ++;
+                                console.log("destra")
+                            }
+    
+                            if(arrayBombe.includes(i+9) == true){
+                                bombeVicine ++;
+                                console.log("sotto")
+                            }
+    
+                            if(arrayBombe.includes(i+10) == true){
+                                bombeVicine ++;
+                                console.log("sotto a destra")
+                            }
+    
+                            if(arrayBombe.includes(i+8) == true){
+                                bombeVicine ++;
+                                console.log("sotto a sinistra")
+                            }
+    
+                        }
+                        
+    
+                        this.innerHTML = `<span>${bombeVicine}</span>`
+                        
                     }
                 }
             })
 
             grigliaHtml.append(box);
-        }*/
+        }
 
     //se la difficoltà è la numero 3
     } else if (difficultyChoose.value === "difficoltà3"){
@@ -154,6 +466,7 @@ buttonGioca.addEventListener( "click", function(){
             let box = document.createElement("div");
             box.classList.add("box");
             box.innerHTML = `<span>${i}</span>`;
+            bombeVicine = 0;
 
             box.addEventListener( "click", function(){
                 if(arrayBombe.includes(i)){
@@ -179,7 +492,7 @@ buttonGioca.addEventListener( "click", function(){
             })
         
             grigliaHtml.append(box);
-        } */
+        }*/
     }
 })
 
@@ -191,15 +504,13 @@ function campoMinato (nCaselle, nPuntiVittoria){
         } while (arrayBombe.includes(randomNum));
     
         arrayBombe.push(randomNum);
-    
-        console.log(arrayBombe);
     }
     
     //Ciclo che genera i box e si occupa di verificare se sono bombe o meno
     for (let i = 1; i <= nCaselle; i++){
         let box = document.createElement("div");
         box.classList.add("box");
-        box.innerHTML = `<span>${i}</span>`;
+        box.innerHTML = `<span class="d-none">${i}</span>`;
 
         box.addEventListener( "click", function(){
             if(arrayBombe.includes(i)){
@@ -219,6 +530,145 @@ function campoMinato (nCaselle, nPuntiVittoria){
                     this.classList.toggle("blue");
                     caselleCliccate++;
                     console.log("punti:", caselleCliccate);
+                    bombeVicine = 0;
+                    
+                    if(i % 10 != 0 && i > 10 && i < 91 && (i-1) % 10 !== 0){
+                        if(arrayBombe.includes(i-1) == true){
+                            bombeVicine ++;
+                            console.log("sinistra")
+                        }
+    
+                        if(arrayBombe.includes(i+1) == true){
+                            bombeVicine ++;
+                            console.log("destra")
+                        }
+    
+                        if(arrayBombe.includes(i-10) == true){
+                            bombeVicine ++;
+                            console.log("sopra")
+                        }
+    
+                        if(arrayBombe.includes(i+10) == true){
+                            bombeVicine ++;
+                            console.log("sotto")
+                        }
+    
+                        if(arrayBombe.includes(i-11) == true){
+                            bombeVicine ++;
+                            console.log("sopra a sinistra")
+                        }
+    
+                        if(arrayBombe.includes(i+11) == true){
+                            bombeVicine ++;
+                            console.log("sotto a destra")
+                        }
+    
+                        if(arrayBombe.includes(i-9) == true){
+                            bombeVicine ++;
+                            console.log("sopra a destra")
+                        }
+    
+                        if(arrayBombe.includes(i+9) == true){
+                            bombeVicine ++;
+                            console.log("sotto a sinistra")
+                        }
+                    } else if (i % 10 == 0){
+                        if(arrayBombe.includes(i+10) == true){
+                            bombeVicine ++;
+                            console.log("sotto")
+                        }
+
+                        if(arrayBombe.includes(i-10) == true){
+                            bombeVicine ++;
+                            console.log("sopra")
+                        }
+
+                        if(arrayBombe.includes(i-1) == true){
+                            bombeVicine ++;
+                            console.log("sinistra")
+                        }
+                    } else if (i > 91 && i < 100){
+                        if(arrayBombe.includes(i-1) == true){
+                            bombeVicine ++;
+                            console.log("sinistra")
+                        }
+
+                        if(arrayBombe.includes(i+1) == true){
+                            bombeVicine ++;
+                            console.log("destra")
+                        }
+
+                        if(arrayBombe.includes(i-10) == true){
+                            bombeVicine ++;
+                            console.log("sopra")
+                        }
+
+                        if(arrayBombe.includes(i-11) == true){
+                            bombeVicine ++;
+                            console.log("sopra a sinistra")
+                        }
+
+                        if(arrayBombe.includes(i-9) == true){
+                            bombeVicine ++;
+                            console.log("sopra a destra")
+                        }
+
+                    } else if ((i-1) % 10 == 0){
+                        if(arrayBombe.includes(i-10) == true){
+                            bombeVicine ++;
+                            console.log("sopra")
+                        }
+
+                        if(arrayBombe.includes(i+10) == true){
+                            bombeVicine ++;
+                            console.log("sotto")
+                        }
+
+                        if(arrayBombe.includes(i+1) == true){
+                            bombeVicine ++;
+                            console.log("destra")
+                        }
+
+                        if(arrayBombe.includes(i-9) == true){
+                            bombeVicine ++;
+                            console.log("sopra a destra")
+                        }
+
+                        if(arrayBombe.includes(i+11) == true){
+                            bombeVicine ++;
+                            console.log("sotto a destra")
+                        }
+                    } else if (i < 10 || i > 1){
+                        if(arrayBombe.includes(i-1) == true){
+                            bombeVicine ++;
+                            console.log("sinistra")
+                        }
+
+                        if(arrayBombe.includes(i+1) == true){
+                            bombeVicine ++;
+                            console.log("destra")
+                        }
+
+                        if(arrayBombe.includes(i+10) == true){
+                            bombeVicine ++;
+                            console.log("sotto")
+                        }
+
+                        if(arrayBombe.includes(i+11) == true){
+                            bombeVicine ++;
+                            console.log("sotto a destra")
+                        }
+
+                        if(arrayBombe.includes(i+9) == true){
+                            bombeVicine ++;
+                            console.log("sotto a sinistra")
+                        }
+
+                    }
+                    
+
+                    this.innerHTML = `<span>${bombeVicine}</span>`
+                    
                 }
                 
             }
