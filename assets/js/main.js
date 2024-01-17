@@ -447,9 +447,8 @@ buttonGioca.addEventListener( "click", function(){
         arrayBombe = [];
         caselleCliccate = 0;
 
-        campoMinato(49, 32);
+        //campoMinato(49, 32);
 
-        /*
         //Crea array con 16 numeri casuali compresi tra 1 e 49
         for (let i = 0; i < 16; i++){
             do{
@@ -486,18 +485,172 @@ buttonGioca.addEventListener( "click", function(){
                         this.classList.toggle("blue");
                         caselleCliccate++;
                         console.log("punti:", caselleCliccate);
+                        bombeVicine = 0;
+                        
+                        //Tutti i numeri eccetto i bordi
+                        if(i % 7 != 0 && i > 7 && i < 43 && (i-1) % 7 !== 0){
+                            if(arrayBombe.includes(i-1) == true){
+                                bombeVicine ++;
+                                console.log("sinistra")
+                            }
+        
+                            if(arrayBombe.includes(i+1) == true){
+                                bombeVicine ++;
+                                console.log("destra")
+                            }
+        
+                            if(arrayBombe.includes(i-7) == true){
+                                bombeVicine ++;
+                                console.log("sopra")
+                            }
+        
+                            if(arrayBombe.includes(i+7) == true){
+                                bombeVicine ++;
+                                console.log("sotto")
+                            }
+        
+                            if(arrayBombe.includes(i-8) == true){
+                                bombeVicine ++;
+                                console.log("sopra a sinistra")
+                            }
+        
+                            if(arrayBombe.includes(i+8) == true){
+                                bombeVicine ++;
+                                console.log("sotto a destra")
+                            }
+        
+                            if(arrayBombe.includes(i-6) == true){
+                                bombeVicine ++;
+                                console.log("sopra a destra")
+                            }
+        
+                            if(arrayBombe.includes(i+6) == true){
+                                bombeVicine ++;
+                                console.log("sotto a sinistra")
+                            }
+                        //Colonna di destra (deve avere 5 condizioni)
+                        } else if (i % 7 == 0){
+                            if(arrayBombe.includes(i+7) == true){
+                                bombeVicine ++;
+                                console.log("sotto")
+                            }
+    
+                            if(arrayBombe.includes(i-7) == true){
+                                bombeVicine ++;
+                                console.log("sopra")
+                            }
+    
+                            if(arrayBombe.includes(i-1) == true){
+                                bombeVicine ++;
+                                console.log("sinistra")
+                            }
+    
+                            if(arrayBombe.includes(i-8) == true){
+                                bombeVicine ++;
+                                console.log("sopra a sinistra")
+                            }
+    
+                            if(arrayBombe.includes(i+6) == true){
+                                bombeVicine ++;
+                                console.log("sotto a sinistra")
+                            }
+                        
+                        //Ultima Riga Bassa eccetto 43 e 49(deve avere 5 condizioni)
+                        } else if (i > 43 && i < 49){
+                            if(arrayBombe.includes(i-1) == true){
+                                bombeVicine ++;
+                                console.log("sinistra")
+                            }
+    
+                            if(arrayBombe.includes(i+1) == true){
+                                bombeVicine ++;
+                                console.log("destra")
+                            }
+    
+                            if(arrayBombe.includes(i-7) == true){
+                                bombeVicine ++;
+                                console.log("sopra")
+                            }
+    
+                            if(arrayBombe.includes(i-8) == true){
+                                bombeVicine ++;
+                                console.log("sopra a sinistra")
+                            }
+    
+                            if(arrayBombe.includes(i-6) == true){
+                                bombeVicine ++;
+                                console.log("sopra a destra")
+                            }
+    
+                        //Colonna di sinistra (deve avere 5 condizioni)
+                        } else if ((i-1) % 7 == 0){
+                            if(arrayBombe.includes(i-7) == true){
+                                bombeVicine ++;
+                                console.log("sopra")
+                            }
+    
+                            if(arrayBombe.includes(i+7) == true){
+                                bombeVicine ++;
+                                console.log("sotto")
+                            }
+    
+                            if(arrayBombe.includes(i+1) == true){
+                                bombeVicine ++;
+                                console.log("destra")
+                            }
+    
+                            if(arrayBombe.includes(i-6) == true){
+                                bombeVicine ++;
+                                console.log("sopra a destra")
+                            }
+    
+                            if(arrayBombe.includes(i+8) == true){
+                                bombeVicine ++;
+                                console.log("sotto a destra")
+                            }
+                        
+                        //Prima Riga Alta eccetto 1 e 10(deve avere 5 condizioni)
+                        } else if (i < 7 || i > 1){
+                            if(arrayBombe.includes(i-1) == true){
+                                bombeVicine ++;
+                                console.log("sinistra")
+                            }
+    
+                            if(arrayBombe.includes(i+1) == true){
+                                bombeVicine ++;
+                                console.log("destra")
+                            }
+    
+                            if(arrayBombe.includes(i+7) == true){
+                                bombeVicine ++;
+                                console.log("sotto")
+                            }
+    
+                            if(arrayBombe.includes(i+8) == true){
+                                bombeVicine ++;
+                                console.log("sotto a destra")
+                            }
+    
+                            if(arrayBombe.includes(i+6) == true){
+                                bombeVicine ++;
+                                console.log("sotto a sinistra")
+                            }
+    
+                        }
+
+                        this.innerHTML = `<span>${bombeVicine}</span>`
                     }
                     
                 }
             })
         
             grigliaHtml.append(box);
-        }*/
+        }
     }
 })
 
 
-function campoMinato (nCaselle, nPuntiVittoria){
+/*function campoMinato (nCaselle, nPuntiVittoria){
     for (let i = 0; i < 16; i++){
         do{
            randomNum = Math.floor(Math.random() * nCaselle) + 1;
@@ -677,6 +830,8 @@ function campoMinato (nCaselle, nPuntiVittoria){
         grigliaHtml.append(box);
     }
 }
+
+*/
 
 
 
