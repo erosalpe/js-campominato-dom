@@ -122,7 +122,7 @@ buttonGioca.addEventListener( "click", function(){
 
         for (let i = 0; i < 16; i++){
             do{
-               randomNum = Math.floor(Math.random() * 16) + 1;
+               randomNum = Math.floor(Math.random() * 49) + 1;
             } while (arrayBombe.includes(randomNum));
         
             arrayBombe.push(randomNum);
