@@ -7,6 +7,7 @@
 :root{
     --gap: 0px;
     --columns: 10;
+    --overlay: flex;
 }
 
 .web-app{
@@ -49,6 +50,7 @@ main{
     flex-wrap: wrap;
     margin: 0 auto;
     width: 40%;
+    position: relative
 }
 
 .box{
@@ -59,8 +61,42 @@ main{
     justify-content: center;
     align-items: center;
     font-size: 1.5rem;
+    z-index: 0;
 }
 
-.active{
+.red{
+    background-color: red;
+}
+
+.blue{
     background-color: lightskyblue;
+}
+
+.overlay{
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    aspect-ratio: 1;
+    display: var(--overlay);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.testoSconfitta{
+    text-align: center;
+    font-size: 3.5rem;
+    color: red;
+    text-shadow: 2px 0 #000000, -2px 0 #000000, 0 2px #000000, 0 -2px #000000,
+               1px 1px #000000, -1px -1px #000000, 1px -1px #000000, -1px 1px #000000
+}
+
+.testoVittoria{
+    text-align: center;
+    font-size: 3.5rem;
+    color: lime;
+    text-shadow: 2px 0 #000000, -2px 0 #000000, 0 2px #000000, 0 -2px #000000,
+               1px 1px #000000, -1px -1px #000000, 1px -1px #000000, -1px 1px #000000
 }
