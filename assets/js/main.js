@@ -32,6 +32,9 @@ buttonGioca.addEventListener( "click", function(){
         arrayBombe = [];
         caselleCliccate = 0;
 
+        campoMinato(100, 84);
+
+        /*
         //Crea array con 16 numeri casuali compresi tra 1 e 100
         for (let i = 0; i < 16; i++){
             do{
@@ -72,7 +75,7 @@ buttonGioca.addEventListener( "click", function(){
             })
 
             grigliaHtml.append(box);
-        }
+        }*/
         
 
     //se la difficoltà è la numero 2
@@ -80,7 +83,10 @@ buttonGioca.addEventListener( "click", function(){
         r.style.setProperty('--columns', '9');
         arrayBombe = [];
         caselleCliccate = 0;
-        
+
+        campoMinato(81, 65);
+
+        /*
         //Crea array con 16 numeri casuali compresi tra 1 e 81
         for (let i = 0; i < 16; i++){
             do{
@@ -121,7 +127,7 @@ buttonGioca.addEventListener( "click", function(){
             })
 
             grigliaHtml.append(box);
-        }
+        }*/
 
     //se la difficoltà è la numero 3
     } else if (difficultyChoose.value === "difficoltà3"){
@@ -129,6 +135,9 @@ buttonGioca.addEventListener( "click", function(){
         arrayBombe = [];
         caselleCliccate = 0;
 
+        campoMinato(49, 32);
+
+        /*
         //Crea array con 16 numeri casuali compresi tra 1 e 49
         for (let i = 0; i < 16; i++){
             do{
@@ -170,9 +179,54 @@ buttonGioca.addEventListener( "click", function(){
             })
         
             grigliaHtml.append(box);
-        }
+        } */
     }
 })
+
+
+function campoMinato (nCaselle, nPuntiVittoria){
+    for (let i = 0; i < 16; i++){
+        do{
+           randomNum = Math.floor(Math.random() * nCaselle) + 1;
+        } while (arrayBombe.includes(randomNum));
+    
+        arrayBombe.push(randomNum);
+    
+        console.log(arrayBombe);
+    }
+    
+    //Ciclo che genera i box e si occupa di verificare se sono bombe o meno
+    for (let i = 1; i <= nCaselle; i++){
+        let box = document.createElement("div");
+        box.classList.add("box");
+        box.innerHTML = `<span>${i}</span>`;
+
+        box.addEventListener( "click", function(){
+            if(arrayBombe.includes(i)){
+                testoSconfitta.innerHTML = `<p>Hai perso<br><br>Hai fatto ${caselleCliccate} punti</p>`;
+                this.classList.toggle("red");
+                grigliaHtml.append(overlaySconfitta);
+                punteggioSessione.innerText = parseInt(punteggioSessione.innerText) + caselleCliccate;
+            } else if (caselleCliccate === nPuntiVittoria){
+                testoVittoria.innerHTML = `<p>Hai vinto<br><br>Hai fatto ${caselleCliccate} punti</p>`;
+                this.classList.toggle("blue");
+                grigliaHtml.append(overlayVittoria);
+                punteggioSessione.innerText = parseInt(punteggioSessione.innerText) + caselleCliccate;
+            } else {
+
+                //if per evitare che le caselle diventate azzurre possano essere ripremute all'infinito per vincere
+                if (this.classList.contains("blue") === false){
+                    this.classList.toggle("blue");
+                    caselleCliccate++;
+                    console.log("punti:", caselleCliccate);
+                }
+                
+            }
+        })
+    
+        grigliaHtml.append(box);
+    }
+}
 
 
 
