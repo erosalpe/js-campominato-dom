@@ -1,0 +1,66 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --gap: 0px;
+    --columns: 10;
+}
+
+.web-app{
+    height: 100vh;
+}
+
+header{
+    height: 10%;
+}
+
+footer{
+    height: 10%;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+}
+
+.elementi-header{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.difficoltà{
+    display: flex;
+    gap: 2rem;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #7fffd4;
+    height: 80%;
+    padding: 10rem;
+}
+
+#griglia{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: 40%;
+}
+
+.box{
+    border: 1px solid black;
+    flex-basis: calc((100% / var(--columns)) - var(--gap) + (var(--gap) / var(--columns)));
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.active{
+    background-color: lightskyblue;
+}
