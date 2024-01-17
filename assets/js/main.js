@@ -50,7 +50,7 @@ buttonGioca.addEventListener( "click", function(){
         for (let i = 1; i <= 100; i++){
             let box = document.createElement("div");
             box.classList.add("box");
-            box.innerHTML = `<span>${i}</span>`;
+            box.innerHTML = `<span class="d-none">${i}</span>`;
 
             box.addEventListener( "click", function(){
 
@@ -258,7 +258,7 @@ buttonGioca.addEventListener( "click", function(){
         for (let i = 1; i <= 81; i++){
             let box = document.createElement("div");
             box.classList.add("box");
-            box.innerHTML = `<span>${i}</span>`;
+            box.innerHTML = `<span class="d-none">${i}</span>`;
 
             box.addEventListener( "click", function(){
                 if(arrayBombe.includes(i)){
@@ -464,7 +464,7 @@ buttonGioca.addEventListener( "click", function(){
         for (let i = 1; i <= 49; i++){
             let box = document.createElement("div");
             box.classList.add("box");
-            box.innerHTML = `<span>${i}</span>`;
+            box.innerHTML = `<span class="d-none">${i}</span>`;
             bombeVicine = 0;
 
             box.addEventListener( "click", function(){
