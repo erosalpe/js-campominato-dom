@@ -7,38 +7,31 @@ let arrayBombe = [];
 let randomNum
 let caselleCliccate = 0;
 
+//creazione overlay in caso di sconfitta
 const overlaySconfitta = document.createElement("div");
 overlaySconfitta.classList.add("overlay");
 const testoSconfitta = document.createElement("h2");
 testoSconfitta.classList.add("testoSconfitta");
 overlaySconfitta.appendChild(testoSconfitta);
 
-
+//creazione overlay in caso di sconfitta
 const overlayVittoria = document.createElement("div");
 overlayVittoria.classList.add("overlay");
 const testoVittoria = document.createElement("h2");
 testoVittoria.classList.add("testoVittoria");
 overlayVittoria.appendChild(testoVittoria);
 
-
-
-
-
-
-
-
-
-
-
-
+//Bottone Gioca
 buttonGioca.addEventListener( "click", function(){
     grigliaHtml.innerHTML = "";
 
+    //se la difficoltà è la numero 1
     if (difficultyChoose.value === "difficoltà1"){
         r.style.setProperty('--columns', '10');
         arrayBombe = [];
         caselleCliccate = 0;
 
+        //Crea array con 16 numeri casuali compresi tra 1 e 100
         for (let i = 0; i < 16; i++){
             do{
                randomNum = Math.floor(Math.random() * 100) + 1;
@@ -49,7 +42,7 @@ buttonGioca.addEventListener( "click", function(){
             console.log(arrayBombe);
         }
         
-
+        //Ciclo che genera i box e si occupa di verificare se sono bombe o meno
         for (let i = 1; i <= 100; i++){
             let box = document.createElement("div");
             box.classList.add("box");
@@ -75,11 +68,13 @@ buttonGioca.addEventListener( "click", function(){
             grigliaHtml.append(box);
         }
 
+    //se la difficoltà è la numero 2
     } else if (difficultyChoose.value === "difficoltà2"){
         r.style.setProperty('--columns', '9');
         arrayBombe = [];
         caselleCliccate = 0;
         
+        //Crea array con 16 numeri casuali compresi tra 1 e 81
         for (let i = 0; i < 16; i++){
             do{
                randomNum = Math.floor(Math.random() * 81) + 1;
@@ -90,7 +85,7 @@ buttonGioca.addEventListener( "click", function(){
             console.log(arrayBombe);
         }
         
-
+        //Ciclo che genera i box e si occupa di verificare se sono bombe o meno
         for (let i = 1; i <= 81; i++){
             let box = document.createElement("div");
             box.classList.add("box");
@@ -115,11 +110,13 @@ buttonGioca.addEventListener( "click", function(){
             grigliaHtml.append(box);
         }
 
+    //se la difficoltà è la numero 3
     } else if (difficultyChoose.value === "difficoltà3"){
         r.style.setProperty('--columns', '7');
         arrayBombe = [];
         caselleCliccate = 0;
 
+        //Crea array con 16 numeri casuali compresi tra 1 e 49
         for (let i = 0; i < 16; i++){
             do{
                randomNum = Math.floor(Math.random() * 49) + 1;
@@ -130,7 +127,7 @@ buttonGioca.addEventListener( "click", function(){
             console.log(arrayBombe);
         }
         
-
+        //Ciclo che genera i box e si occupa di verificare se sono bombe o meno
         for (let i = 1; i <= 49; i++){
             let box = document.createElement("div");
             box.classList.add("box");
