@@ -2,6 +2,7 @@ const grigliaHtml = document.getElementById("griglia");
 const buttonGioca = document.getElementById("gioca");
 const difficultyChoose = document.getElementById("difficulty");
 var r = document.querySelector(':root');
+const punteggioSessione = document.getElementById("punteggio");
 
 let arrayBombe = [];
 let randomNum
@@ -51,11 +52,13 @@ buttonGioca.addEventListener( "click", function(){
                 if(arrayBombe.includes(i)){
                     testoSconfitta.innerHTML = `<p>Hai perso<br><br>Hai fatto ${caselleCliccate} punti</p>`;
                     this.classList.toggle("red");
-                    grigliaHtml.append(overlaySconfitta); 
+                    grigliaHtml.append(overlaySconfitta);
+                    punteggioSessione.innerText = parseInt(punteggioSessione.innerText) + caselleCliccate; 
                 } else if (caselleCliccate === 84){
                     testoVittoria.innerHTML = `<p>Hai vinto<br><br>Hai fatto ${caselleCliccate} punti</p>`;
                     this.classList.toggle("blue");
-                    grigliaHtml.append(overlayVittoria); 
+                    grigliaHtml.append(overlayVittoria);
+                    punteggioSessione.innerText = parseInt(punteggioSessione.innerText) + caselleCliccate;
                 } else {
 
                     //if per evitare che le caselle diventate azzurre possano essere ripremute all'infinito per vincere
@@ -97,11 +100,13 @@ buttonGioca.addEventListener( "click", function(){
                 if(arrayBombe.includes(i)){
                     testoSconfitta.innerHTML = `<p>Hai perso<br><br>Hai fatto ${caselleCliccate} punti</p>`;
                     this.classList.toggle("red");
-                    grigliaHtml.append(overlaySconfitta); 
+                    grigliaHtml.append(overlaySconfitta);
+                    punteggioSessione.innerText = parseInt(punteggioSessione.innerText) + caselleCliccate;
                 } else if (caselleCliccate === 65){
                     testoVittoria.innerHTML = `<p>Hai vinto<br><br>Hai fatto ${caselleCliccate} punti</p>`;
                     this.classList.toggle("blue");
-                    grigliaHtml.append(overlayVittoria); 
+                    grigliaHtml.append(overlayVittoria);
+                    punteggioSessione.innerText = parseInt(punteggioSessione.innerText) + caselleCliccate;
                 } else {
 
                     //if per evitare che le caselle diventate azzurre possano essere ripremute all'infinito per vincere
@@ -143,11 +148,13 @@ buttonGioca.addEventListener( "click", function(){
                 if(arrayBombe.includes(i)){
                     testoSconfitta.innerHTML = `<p>Hai perso<br><br>Hai fatto ${caselleCliccate} punti</p>`;
                     this.classList.toggle("red");
-                    grigliaHtml.append(overlaySconfitta); 
+                    grigliaHtml.append(overlaySconfitta);
+                    punteggioSessione.innerText = parseInt(punteggioSessione.innerText) + caselleCliccate;
                 } else if (caselleCliccate === 32){
                     testoVittoria.innerHTML = `<p>Hai vinto<br><br>Hai fatto ${caselleCliccate} punti</p>`;
                     this.classList.toggle("blue");
-                    grigliaHtml.append(overlayVittoria); 
+                    grigliaHtml.append(overlayVittoria);
+                    punteggioSessione.innerText = parseInt(punteggioSessione.innerText) + caselleCliccate;
                 } else {
 
                     //if per evitare che le caselle diventate azzurre possano essere ripremute all'infinito per vincere
