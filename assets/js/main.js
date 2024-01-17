@@ -52,6 +52,11 @@ buttonGioca.addEventListener( "click", function(){
             box.classList.add("box");
             box.innerHTML = `<span class="d-none">${i}</span>`;
 
+            box.addEventListener( "contextmenu", function(b){
+                b.preventDefault()
+                this.classList.toggle("bomba");
+            })
+
             box.addEventListener( "click", function(){
 
                 if(arrayBombe.includes(i)){
@@ -260,6 +265,11 @@ buttonGioca.addEventListener( "click", function(){
             box.classList.add("box");
             box.innerHTML = `<span class="d-none">${i}</span>`;
 
+            box.addEventListener( "contextmenu", function(b){
+                b.preventDefault()
+                this.classList.toggle("bomba");
+            })
+
             box.addEventListener( "click", function(){
                 if(arrayBombe.includes(i)){
                     testoSconfitta.innerHTML = `<p>Hai perso<br><br>Hai fatto ${caselleCliccate} punti</p>`;
@@ -466,6 +476,11 @@ buttonGioca.addEventListener( "click", function(){
             box.classList.add("box");
             box.innerHTML = `<span class="d-none">${i}</span>`;
             bombeVicine = 0;
+
+            box.addEventListener( "contextmenu", function(b){
+                b.preventDefault()
+                this.classList.toggle("bomba");
+            })
 
             box.addEventListener( "click", function(){
                 if(arrayBombe.includes(i)){

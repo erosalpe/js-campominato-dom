@@ -130,3 +130,7 @@ figure > img{
 .d-none{
     display: none;
 }
+
+.bomba{
+    background-color: purple;
+}
