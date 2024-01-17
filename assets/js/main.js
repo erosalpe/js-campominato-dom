@@ -39,6 +39,7 @@ buttonGioca.addEventListener( "click", function(){
             } while (arrayBombe.includes(randomNum));
         
             arrayBombe.push(randomNum);
+            console.log(arrayBombe);
         }
         
         //Ciclo che genera i box e si occupa di verificare se sono bombe o meno
@@ -72,6 +73,7 @@ buttonGioca.addEventListener( "click", function(){
 
             grigliaHtml.append(box);
         }
+        
 
     //se la difficoltà è la numero 2
     } else if (difficultyChoose.value === "difficoltà2"){
