@@ -38,8 +38,6 @@ buttonGioca.addEventListener( "click", function(){
             } while (arrayBombe.includes(randomNum));
         
             arrayBombe.push(randomNum);
-        
-            console.log(arrayBombe);
         }
         
         //Ciclo che genera i box e si occupa di verificare se sono bombe o meno
@@ -59,9 +57,13 @@ buttonGioca.addEventListener( "click", function(){
                     this.classList.toggle("blue");
                     grigliaHtml.append(overlayVittoria); 
                 } else {
-                    this.classList.toggle("blue");
-                    caselleCliccate++;
-                    console.log(caselleCliccate);
+
+                    //if per evitare che le caselle diventate azzurre possano essere ripremute all'infinito per vincere
+                    if (this.classList.contains("blue") === false){
+                        this.classList.toggle("blue");
+                        caselleCliccate++;
+                        console.log("punti:", caselleCliccate);
+                    }
                 }
             })
 
@@ -101,9 +103,13 @@ buttonGioca.addEventListener( "click", function(){
                     this.classList.toggle("blue");
                     grigliaHtml.append(overlayVittoria); 
                 } else {
-                    this.classList.toggle("blue");
-                    caselleCliccate++;
-                    console.log(caselleCliccate);
+
+                    //if per evitare che le caselle diventate azzurre possano essere ripremute all'infinito per vincere
+                    if (this.classList.contains("blue") === false){
+                        this.classList.toggle("blue");
+                        caselleCliccate++;
+                        console.log("punti:", caselleCliccate);
+                    }
                 }
             })
 
@@ -143,9 +149,14 @@ buttonGioca.addEventListener( "click", function(){
                     this.classList.toggle("blue");
                     grigliaHtml.append(overlayVittoria); 
                 } else {
-                    this.classList.toggle("blue");
-                    caselleCliccate++;
-                    console.log(caselleCliccate);
+
+                    //if per evitare che le caselle diventate azzurre possano essere ripremute all'infinito per vincere
+                    if (this.classList.contains("blue") === false){
+                        this.classList.toggle("blue");
+                        caselleCliccate++;
+                        console.log("punti:", caselleCliccate);
+                    }
+                    
                 }
             })
         

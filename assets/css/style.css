@@ -43,6 +43,8 @@ main{
     background-color: #7fffd4;
     height: 80%;
     padding: 10rem;
+    -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 36px -22px 0px 34px rgba(0,0,0,0); 
+    box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 36px -22px 0px 34px rgba(0,0,0,0);
 }
 
 #griglia{
@@ -62,6 +64,7 @@ main{
     align-items: center;
     font-size: 1.5rem;
     z-index: 0;
+    background-color: #38464b;
 }
 
 .red{
@@ -86,17 +89,40 @@ main{
 }
 
 .testoSconfitta{
+    color: red;
+}
+
+.testoVittoria{
+    color: lime;
+}
+
+.testoVittoria,
+.testoSconfitta{
     text-align: center;
     font-size: 3.5rem;
-    color: red;
     text-shadow: 2px 0 #000000, -2px 0 #000000, 0 2px #000000, 0 -2px #000000,
                1px 1px #000000, -1px -1px #000000, 1px -1px #000000, -1px 1px #000000
 }
 
-.testoVittoria{
-    text-align: center;
-    font-size: 3.5rem;
-    color: lime;
-    text-shadow: 2px 0 #000000, -2px 0 #000000, 0 2px #000000, 0 -2px #000000,
-               1px 1px #000000, -1px -1px #000000, 1px -1px #000000, -1px 1px #000000
+.inputCustom{
+    background-color: lightgray;
+    border: 1px solid grey;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 36px -22px 0px 34px rgba(0,0,0,0); 
+    box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 36px -22px 0px 34px rgba(0,0,0,0);
+}
+
+.titolo{
+    display: flex;
+    align-items:  center;
+    gap: 1rem;
+}
+
+figure{
+    width: 10%;
+}
+
+figure > img{
+    width: 100%;
 }
