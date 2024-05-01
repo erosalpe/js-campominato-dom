@@ -28,7 +28,7 @@ buttonGioca.addEventListener( "click", function(){
     grigliaHtml.innerHTML = "";
 
     //se la difficoltà è la numero 1
-    if (difficultyChoose.value === "difficoltà1"){
+    if (difficultyChoose.value == "Difficile"){
         r.style.setProperty('--columns', '10');
         arrayBombe = [];
         caselleCliccate = 0;
@@ -241,7 +241,7 @@ buttonGioca.addEventListener( "click", function(){
         
 
     //se la difficoltà è la numero 2
-    } else if (difficultyChoose.value === "difficoltà2"){
+    } else if (difficultyChoose.value === "Medio"){
         r.style.setProperty('--columns', '9');
         arrayBombe = [];
         caselleCliccate = 0;
@@ -452,7 +452,7 @@ buttonGioca.addEventListener( "click", function(){
         }
 
     //se la difficoltà è la numero 3
-    } else if (difficultyChoose.value === "difficoltà3"){
+    } else if (difficultyChoose.value === "Facile"){
         r.style.setProperty('--columns', '7');
         arrayBombe = [];
         caselleCliccate = 0;
